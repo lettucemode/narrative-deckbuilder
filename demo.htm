@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Jesse M. Porch | Application Developer, Writer | Boston, MA</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Demo">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <script src="cards.js"></script>
+    <script src="code.js"></script>
+  </head>
+  <body>
+    <main>
+        <div id="card">
+            <div>
+                <label>ID: </label>
+                <span id="cardID"></span>
+            </div>
+            <div>
+                <label>Name: </label>
+                <span id="cardName"></span>
+            </div>
+            <div>
+                <label>Description: </label>
+                <span id="cardDescription"></span>
+            </div>
+        </div>
+        <button id="draw" onclick="deck.draw([hasTag,isOdd]).show();">Draw</button>
+    </main><!-- /.main content column -->
+  </body>
+</html>
