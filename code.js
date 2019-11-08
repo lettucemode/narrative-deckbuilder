@@ -20,11 +20,18 @@ class Card {
         console.log("Error, no "+id+" exists.");
     }
 
-    show() {
-        const el = document.getElementById("card");
-        el.querySelector("#cardID").innerText = this.id;
-        el.querySelector("#cardName").innerText = this.name;
-        el.querySelector("#cardDescription").innerText = this.description;
+    show(element) {
+        const el = document.getElementById(element);
+        el.querySelector(".cardID").innerText = this.id;
+        el.querySelector(".cardName").innerText = this.name;
+        el.querySelector(".cardDescription").innerText = this.description;
+    }
+
+    activate() {
+        this.active = true;
+    }
+    deactivate() {
+        this.active = false;
     }
 }
 
@@ -39,8 +46,10 @@ class Deck {
         }
     }
 
-    insert(card) {
-        this.deck.push(card);
+    insert(cards) {
+        for (const card of cards) {
+            this.deck.push(card);
+        }
     }
 
     remove(id) {
@@ -63,9 +72,23 @@ class Deck {
         }
         return newDeck;
     }
-
-    draw(cond = [isActive]) {
+    filter(predicates) {
+        const newDeck = new Deck();
         let d = this.deck;
+        for (const p of predicates) {
+            d = d.filter(p);
+        }
+        for (const c of d) {
+            newDeck.insert(c);
+        }
+
+        return newDeck;
+    }
+
+    draw(cond = [], active=true, inactive=false) {
+        let d = this.deck;
+        if (!active) cond.push(isInactive);
+        if (!inactive) cond.push(isActive);
         for (const c of cond) {
             d = d.filter(c);
         }
@@ -74,18 +97,21 @@ class Deck {
         }
         let rand = Math.floor(Math.random()*d.length);
         const r = d[rand];
-        r.active = false;
+        r.deactivate();
         return r;
     }
 
     shuffle() {
         for (const c of this.deck) {
-            c.active = true;
+            c.activate();
         }
     }
 }
 function isActive(card) {
     return card.active == true
+}
+function isInactive(card) {
+    return card.active == false
 }
 function isEven(card) {
     return (card.id)%2 == 0;
@@ -102,9 +128,11 @@ const deck2 = new Deck([2,4]);
 const deckM = Deck.Merge(deck,deck2);
 console.log(deckM);
 deckM.remove(2);
+deckF = deckM.filter(isEven);
+console.log(deckF);
 
 const b = document.getElementById("drawButton");
-b.onclick=() => { deckM.draw().show(); };
+b.onclick=() => { deckM.draw().show("card"); };
 
 const s = document.getElementById("shuffleButton");
 s.onclick=() => { deckM.shuffle(); };
