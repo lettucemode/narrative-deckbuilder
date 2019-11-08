@@ -30,4 +30,4 @@ Deck utility methods:
 * Deck.Merge(\[decks\]): Returns a single Deck that contains the union of all decks provided. Note that any card which appears in multiple decks will be represented multiple times.
 * filter(\[predicates\]): Returns a Deck consisting of all cards that match the conditions specified by the predicates 
 * shuffle(): Calls reactivate() on all cards in the Deck.
-* draw(\[filters\]): Draws a card from the Deck 
+* draw(\[filters\],active=true, inactive=false): Draws a card from the Deck after applying any provided filters. By default will only draw from active cards, though you can specify whether to include active, inactive, or both with the appropriate flags. 
