@@ -1,4 +1,4 @@
-//import Deck from './deck.js';
+let state = {};
 
 const normalWeeks = new Deck([
     "spring_1",
@@ -18,14 +18,15 @@ const specialEvents = new Deck([
     "bandit_1",
     "bandit_1",
     "bandit_1",
-    "bandit_2"
+    "bandit_2",
+    "surprise_1",
 ]);
 
-const deckM = Deck.Merge([normalWeeks,specialEvents]);
-deckM.remove(2);
+const deckM = Deck.Merge([normalWeeks,specialEvents]).filter([hasAnyTag]);
+deckM.show();
 
 const b = document.getElementById("drawButton");
-b.onclick=() => { deckM.draw().show("card"); };
+b.onclick=() => { deckM.draw().play(state).show("card"); };
 
 const s = document.getElementById("shuffleButton");
 s.onclick=() => { deckM.shuffle(); };

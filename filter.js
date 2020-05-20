@@ -7,3 +7,6 @@ isInactive = (card) => {
 hasAnyTag = (card) => {
     return card.tags.length > 0;
 }
+hasTag = (card,tag) => {
+    return card.tags.includes(tag);
+}

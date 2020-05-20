@@ -39,11 +39,16 @@ const Special = {
         name: "Bandit Raid",
         description: "Bandits arrive and take a large portion of your current crop.",
         tags: ["bandits","raid","spring","summer","fall"],
+        active: false,
     },
     "bandit_3": {
         name: "Bandit Raid",
         description: "Desparate Bandits arrive and take all of your food stores.",
         tags: ["bandits","raid","winter"],
+        active: false,
+    },
+    "surprise_1": {
+        name: "Surprise",
     },
 };
 

@@ -1,9 +1,7 @@
-//import Card from './card.js';
-//import './filter.js';
-
 class Deck {
-    constructor (cards = []) {
+    constructor (cards = [], id="deck", name="Deck") {
         this.deck = [];
+        this.id = id;
         const newCards = [];
 
         for (const c of cards) {
@@ -20,7 +18,7 @@ class Deck {
 
     remove(id) {
         if (this.deck.length <= id) {
-            console.log("No "+id+" present in deck");
+            console.log(`No ${id} present in deck`);
             return;
         }
         const card = this.deck[id];
@@ -28,7 +26,7 @@ class Deck {
         return card;
     }
 
-    static Merge(decks) {
+    static Merge(decks, id="", name="") {
         const newDeck = new Deck();
         for (const d of decks) {
             newDeck.insert(d.deck);
@@ -59,12 +57,28 @@ class Deck {
         let rand = Math.floor(Math.random()*d.length);
         const r = d[rand];
         r.deactivate();
+        this.show();
         return r;
+    }
+
+    show() {
+        const el = document.getElementById(this.id);
+        el.querySelector(".deckSize").innerText = this.size([isActive]);
+        el.querySelector(".discardSize").innerText = this.size([isInactive]);
+        return this;
+    }
+
+    size(filter=[]) {
+        let newDeck = this.filter(filter);
+        return newDeck.deck.length;
     }
 
     shuffle() {
         for (const c of this.deck) {
             c.activate();
         }
+        this.show();
     }
 }
+
+emptyDeck = new Deck();
