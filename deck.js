@@ -13,11 +13,6 @@ class Deck {
     }
 
     insert(cards) {
-        // In case we are trying to insert a single card
-        if (typeof cards === object) {
-            this.deck.push(card);
-            return;
-        }
         for (const card of cards) {
             this.deck.push(card);
         }

@@ -12,7 +12,7 @@ class Card {
         }
         if (Cards.hasOwnProperty(id)) {
             this.id = id;
-            card = Cards[id];
+            const card = Cards[id];
             this.name = card.name;
             this.description = card.description;
             this.tags = card.tags!=null ? card.tags : [];
