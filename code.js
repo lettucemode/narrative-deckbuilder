@@ -1,5 +1,3 @@
-const globalState = new State();
-
 const normalWeeks = new Deck([
     "spring_1",
     "spring_1",
@@ -22,11 +20,19 @@ const specialEvents = new Deck([
     "surprise_1",
 ]);
 
-const deckM = Deck.Merge([normalWeeks,specialEvents]).filter([hasAnyTag]);
-deckM.show();
+const globalState = new State({
+    "test":123
+},{
+    "normal":normalWeeks,
+    "special":specialEvents
+});
+console.log(globalState);
+
+globalState.addDeck("main",Deck.Merge([globalState.getDeck("normal"),globalState.getDeck("special")]).filter([hasAnyTag]));
+globalState.getDeck("main").show();
 
 const b = document.getElementById("drawButton");
-b.onclick=() => { deckM.draw().play(globalState).show("card"); };
+b.onclick=() => { globalState.getDeck("main").draw().play(globalState).show("card"); };
 
 const s = document.getElementById("shuffleButton");
-s.onclick=() => { deckM.shuffle(); };
+s.onclick=() => { globalState.getDeck("main").shuffle(); };

@@ -4,7 +4,7 @@ const Spring = {
         description: "Nothing of note happened this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.update("peace",1);}
+            (state, deck) => { state.updateValue("peace",1);}
         ],
     },
     "spring_2": {
@@ -12,7 +12,7 @@ const Spring = {
         description: "Everyone worked quite hard and got a lot done this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.update("productive",1);}
+            (state, deck) => { state.updateValue("productive",1);}
         ],
     },
     "spring_3": {
@@ -20,7 +20,7 @@ const Spring = {
         description : "Everyone felt pressured and extremely busy this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.update("stress",1);}
+            (state, deck) => { state.updateValue("stress",1);}
         ],
     },
     "spring_4": {
@@ -28,7 +28,7 @@ const Spring = {
         description : "Time to celebrate Nature's rebirth!",
         tags: ["spring","celebration"],
         effects: [
-            (state, deck) => { state.update("festival",1);}
+            (state, deck) => { state.updateValue("festival",1);}
         ],
     },
     "spring_5": {
@@ -36,7 +36,7 @@ const Spring = {
         description : "Everything just seemed to go very well this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.update("pleasant",1);}
+            (state, deck) => { state.updateValue("pleasant",1);}
         ],
     },
 };
