@@ -3,26 +3,41 @@ const Spring = {
         name: "Peaceful Week",
         description: "Nothing of note happened this week.",
         tags: ["spring"],
+        effects: [
+            (state, deck) => { state.update("peace",1);}
+        ],
     },
     "spring_2": {
         name: "Productive Week",
         description: "Everyone worked quite hard and got a lot done this week.",
         tags: ["spring"],
+        effects: [
+            (state, deck) => { state.update("productive",1);}
+        ],
     },
     "spring_3": {
         name : "Stressful Week",
         description : "Everyone felt pressured and extremely busy this week.",
         tags: ["spring"],
+        effects: [
+            (state, deck) => { state.update("stress",1);}
+        ],
     },
     "spring_4": {
         name : "Festival",
         description : "Time to celebrate Nature's rebirth!",
         tags: ["spring","celebration"],
+        effects: [
+            (state, deck) => { state.update("festival",1);}
+        ],
     },
     "spring_5": {
         name : "Pleasant Week",
         description : "Everything just seemed to go very well this week.",
         tags: ["spring"],
+        effects: [
+            (state, deck) => { state.update("pleasant",1);}
+        ],
     },
 };
 

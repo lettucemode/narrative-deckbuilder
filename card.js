@@ -6,25 +6,25 @@ class Card {
             this.description = "The deck is empty";
             this.tags = [];
             this.active = false;
-            this.effect = [];
+            this.effects = [];
             return;
         }
         if (Cards.hasOwnProperty(id)) {
             this.id = id;
             const card = Cards[id];
-            this.name = card.hasOwnProperty('name') ? card.name : "The Card With No Name";
-            this.description = card.hasOwnProperty('description') ? card.description : "Description Goes Here";
-            this.tags = card.hasOwnProperty('tags') ? card.tags : [];
-            this.active = card.hasOwnProperty('active') ? card.active : true;
-            this.effect = card.hasOwnProperty('effect') ? card.effect : [];
+            this.name = 'name' in card ? card.name : "The Card With No Name";
+            this.description = 'description' in card ? card.description : "Description Goes Here";
+            this.tags = 'tags' in card ? card.tags : [];
+            this.active = 'active' in card ? card.active : true;
+            this.effects = 'effects' in card ? card.effects : [];
             return;
         }
         console.log(`Error, no ${id} exists.`);
     }
 
-    play(state={}, deck = emptyDeck) {
-        if (this.hasOwnProperty('effects')) {
-            for (const e of effect) {
+    play(state=new State(), deck = emptyDeck) {
+        if ('effects' in this) {
+            for (const e of this.effects) {
                 e(state, deck);
             }
         }
