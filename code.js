@@ -26,7 +26,6 @@ const globalState = new State({
     "normal":normalWeeks,
     "special":specialEvents
 });
-console.log(globalState);
 
 globalState.addDeck("main",Deck.Merge([globalState.getDeck("normal"),globalState.getDeck("special")]).filter([hasAnyTag]));
 globalState.getDeck("main").show();

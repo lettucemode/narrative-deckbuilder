@@ -2,8 +2,6 @@ class State {
     constructor(init_state={}, init_decks={}) {
         this._state = {};
         this._decks = {};
-        console.log(init_state);
-        console.log(init_decks);
         for (const key of Object.keys(init_state)) {
             this.setValue(key,init_state[key]);
         }

@@ -4,7 +4,7 @@ const Spring = {
         description: "Nothing of note happened this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.updateValue("peace",1);}
+            (state, deck) => { state.updateValue("peace",1); tick(state); }
         ],
     },
     "spring_2": {
@@ -12,7 +12,7 @@ const Spring = {
         description: "Everyone worked quite hard and got a lot done this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.updateValue("productive",1);}
+            (state, deck) => { state.updateValue("productive",1); tick(state); }
         ],
     },
     "spring_3": {
@@ -20,7 +20,7 @@ const Spring = {
         description : "Everyone felt pressured and extremely busy this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.updateValue("stress",1);}
+            (state, deck) => { state.updateValue("stress",1); tick(state); }
         ],
     },
     "spring_4": {
@@ -28,7 +28,7 @@ const Spring = {
         description : "Time to celebrate Nature's rebirth!",
         tags: ["spring","celebration"],
         effects: [
-            (state, deck) => { state.updateValue("festival",1);}
+            (state, deck) => { state.updateValue("festival",1); tick(state); }
         ],
     },
     "spring_5": {
@@ -36,7 +36,7 @@ const Spring = {
         description : "Everything just seemed to go very well this week.",
         tags: ["spring"],
         effects: [
-            (state, deck) => { state.updateValue("pleasant",1);}
+            (state, deck) => { state.updateValue("pleasant",1); tick(state); }
         ],
     },
 };
@@ -49,18 +49,27 @@ const Special = {
         name: "Bandit Scouts",
         description: "Bandits pass through and notice your crop. They warn you they will return and expect tribute in the Fall.",
         tags: ["bandits","spring","summer"],
+        effects: [
+            (state, deck) => { state.updateValue("bandits",1); tick(state); }
+        ],
     },
     "bandit_2": {
         name: "Bandit Raid",
         description: "Bandits arrive and take a large portion of your current crop.",
         tags: ["bandits","raid","spring","summer","fall"],
         active: false,
+        effects: [
+            (state, deck) => { state.updateValue("bandits",1); tick(state); }
+        ],
     },
     "bandit_3": {
         name: "Bandit Raid",
         description: "Desparate Bandits arrive and take all of your food stores.",
         tags: ["bandits","raid","winter"],
         active: false,
+        effects: [
+            (state, deck) => { state.updateValue("bandits",1); tick(state); }
+        ],
     },
     "surprise_1": {
         name: "Surprise",
