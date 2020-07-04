@@ -1,3 +1,5 @@
+const Normal = {};
+
 const Spring = {
     'spring_1': {
         name: 'Peaceful Week',
@@ -41,7 +43,49 @@ const Spring = {
     },
 };
 
-const Summer = {};
+const Summer = {
+    'summer_1': {
+        name: 'Lazy Week',
+        description: 'Too warm to do much of anything this week.',
+        tags: ['summer'],
+        effects: [
+            (state, deck) => { state.updateValue('peace',1); tick(state); }
+        ],
+    },
+    'summer_2': {
+        name: 'Efficient Week',
+        description: 'Everyone worked quite smart and got a lot done this week.',
+        tags: ['summer'],
+        effects: [
+            (state, deck) => { state.updateValue('productive',1); tick(state); }
+        ],
+    },
+    'summer_3': {
+        name : 'Heat Wave',
+        description : 'The weather is brutal this week.',
+        tags: ['summer'],
+        effects: [
+            (state, deck) => { state.updateValue('stress',1); tick(state); }
+        ],
+    },
+    'summer_4': {
+        name : 'Summer Solstice',
+        description : "Time to celebrate the longest day of the year!",
+        tags: ['summer','celebration'],
+        effects: [
+            (state, deck) => { state.updateValue('festival',1); tick(state); }
+        ],
+    },
+    'summer_5': {
+        name : 'Refreshing Week',
+        description : 'The heat broke enough to enjoy this week.',
+        tags: ['summer'],
+        effects: [
+            (state, deck) => { state.updateValue('pleasant',1); tick(state); }
+        ],
+    },
+};
+
 const Fall = {};
 const Winter = {};
 const Special = {

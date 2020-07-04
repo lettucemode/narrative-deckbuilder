@@ -10,7 +10,19 @@ const normalWeeks = new Deck([
     'spring_3',
     'spring_4',
     'spring_5',
-    'spring_5'
+    'spring_5',
+    'summer_1',
+    'summer_1',
+    'summer_1',
+    'summer_2',
+    'summer_2',
+    'summer_2',
+    'summer_3',
+    'summer_3',
+    'summer_3',
+    'summer_4',
+    'summer_5',
+    'summer_5',
 ]);
 const specialEvents = new Deck([
     'bandit_1',
@@ -21,7 +33,8 @@ const specialEvents = new Deck([
 ]);
 
 const globalState = new State({
-    'test':123
+    'test':123,
+    'time':1
 },{
     'Normal': normalWeeks,
     'Special': specialEvents,
@@ -33,7 +46,7 @@ globalState.addDeck(mainDeck);
 globalState.getDeck('Main').show();
 
 const b = document.getElementById('drawButton');
-b.onclick=() => { globalState.getDeck('Main').draw().play(globalState).show('card'); };
+b.onclick=() => { globalState.getDeck('Main').draw([getSeasonFilter(globalState)]).play(globalState).show('card'); };
 
 const s = document.getElementById('shuffleButton');
 s.onclick=() => { globalState.getDeck('Main').shuffle(); };
