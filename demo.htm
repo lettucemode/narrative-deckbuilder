@@ -15,32 +15,38 @@
   </head>
   <body>
     <main>
-        <div id="card">
-            <div>
-                <label>ID: </label>
-                <span class="cardID"></span>
-            </div>
-            <div>
-                <label>Name: </label>
-                <span class="cardName"></span>
-            </div>
-            <div>
-                <label>Description: </label>
-                <span class="cardDescription"></span>
-            </div>
+      <div id="state">
+        <h2>State</h2>
+        <ul id="state-container"></ul>
+      </div>
+      <div id="card">
+        <h2>Cards</h2>
+        <div>
+          <label>ID: </label>
+          <span class="cardID"></span>
         </div>
-        <div id="Main">
-          <div>
-            <label>Size: </label>
-            <span class="deckSize"></span>
-          </div>
-          <div>
-            <label>Discard: </label>
-            <span class="discardSize"></span>
-          </div>
+        <div>
+          <label>Name: </label>
+          <span class="cardName"></span>
+        </div>
+        <div>
+          <label>Description: </label>
+          <span class="cardDescription"></span>
+        </div>
+      </div>
+      <div id="Main">
+        <h2>Deck</h2>
+        <div>
+          <label>Size: </label>
+          <span class="deckSize"></span>
+        </div>
+        <div>
+          <label>Discard: </label>
+          <span class="discardSize"></span>
         </div>
         <button id="drawButton">Draw</button>
         <button id="shuffleButton">Shuffle</button>
+      </div>
     </main><!-- /.main content column -->
   </body>
   <script src="code.js"></script>

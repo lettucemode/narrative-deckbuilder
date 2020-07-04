@@ -1,7 +1,8 @@
 class State {
-    constructor(init_values={}, init_decks={}) {
+    constructor(init_values={}, init_decks={},id='state') {
         this._values = {};
         this._decks = {};
+        this._id = id;
         for (const key of Object.keys(init_values)) {
             this.setValue(key, init_values[key]);
         }
@@ -52,5 +53,17 @@ class State {
         }
         console.log(`Error: deck ${name} does not exist.`);
         return new Deck();
+    }
+
+    display(id='') {
+        const i = id || this._id;
+        const el = document.getElementById(i+'-container');
+        const newEl = el.cloneNode(false);
+        for (const key of Object.keys(this._values)) {
+            const item = document.createElement('LI');
+            item.innerText = `${key}: ${this._values[key]}`;
+            newEl.append(item);
+        }
+        el.parentNode.replaceChild(newEl,el); // Clears all children from past display
     }
 }
