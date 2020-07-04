@@ -1,49 +1,56 @@
 class State {
-    constructor(init_state={}, init_decks={}) {
-        this._state = {};
+    constructor(init_values={}, init_decks={}) {
+        this._values = {};
         this._decks = {};
-        for (const key of Object.keys(init_state)) {
-            this.setValue(key,init_state[key]);
+        for (const key of Object.keys(init_values)) {
+            this.setValue(key, init_values[key]);
         }
         for (const key of Object.keys(init_decks)) {
-            this.addDeck(key,init_decks[key]);
+            this.addDeck(init_decks[key], key);
         }
     }
 
     // Value Methods
     updateValue(key, delta) {
-        if (!(key in this._state)) {
-            this._state[key] = 0;
+        if (!(key in this._values)) {
+            this._values[key] = 0;
         }
-        this._state[key] += delta;
+        this._values[key] += delta;
     }
     setValue(key, value) {
-        this._state[key] = value;
+        this._values[key] = value;
     }
     getValue(key) {
-        return (key in this._state) ? this._state[key] : "";
+        return (key in this._values) ? this._values[key] : '';
     }
 
     // Deck Methods
-    addDeck(name, deck=new Deck()) {
-        if (!(name in this._decks)) {
-            this._decks[name] = deck;
+    addDeck(deck, id='') {
+        const _id = id || deck.id 
+        if (_id === '') {
+            console.log('Cannot include an anonymous deck. Please provide one with a unique ID or specify an ID to use.');
             return;
         }
-        console.log(`Error: deck ${name} already present.`);
+        if (!(_id in this._decks)) {
+            this._decks[_id] = deck;
+            return;
+        }
+        console.log(`Error: Deck ${deck.id} already present.`);
     }
-    removeDeck(name) {
-        if (name in this._decks) {
-            const d = this._decks[name];
-            delete this._decks[name];
+    removeDeck(id) {
+        if (id in this._decks) {
+            const d = this._decks[id];
+            delete this._decks[id];
             return d;
         }
-        console.log(`Error: deck ${name} does not exist.`);
+        console.log(`Error: Deck ${id} does not exist.`);
+        return new Deck();
     }
-    getDeck(name) {
-        if (name in this._decks) {
-            return this._decks[name];
+    getDeck(id) {
+        if (id in this._decks) {
+            return this._decks[id];
         }
         console.log(`Error: deck ${name} does not exist.`);
+        return new Deck();
     }
 }

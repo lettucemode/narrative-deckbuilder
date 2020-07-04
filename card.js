@@ -2,8 +2,8 @@ class Card {
     constructor (id = null) {
         if (id == null) {
             this.id = 0;
-            this.name = "NoCard";
-            this.description = "The deck is empty";
+            this.name = 'NoCard';
+            this.description = 'The deck is empty';
             this.tags = [];
             this.active = false;
             this.effects = [];
@@ -12,8 +12,8 @@ class Card {
         if (Cards.hasOwnProperty(id)) {
             this.id = id;
             const card = Cards[id];
-            this.name = 'name' in card ? card.name : "The Card With No Name";
-            this.description = 'description' in card ? card.description : "Description Goes Here";
+            this.name = 'name' in card ? card.name : 'The Card With No Name';
+            this.description = 'description' in card ? card.description : 'Description Goes Here';
             this.tags = 'tags' in card ? card.tags : [];
             this.active = 'active' in card ? card.active : true;
             this.effects = 'effects' in card ? card.effects : [];
@@ -34,9 +34,9 @@ class Card {
 
     show(element) {
         const el = document.getElementById(element);
-        el.querySelector(".cardID").innerText = this.id;
-        el.querySelector(".cardName").innerText = this.name;
-        el.querySelector(".cardDescription").innerText = this.description;
+        el.querySelector('.cardID').innerText = this.id;
+        el.querySelector('.cardName').innerText = this.name;
+        el.querySelector('.cardDescription').innerText = this.description;
         return this;
     }
 
