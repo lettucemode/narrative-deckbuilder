@@ -54,7 +54,7 @@ const Summer = {
     },
     'summer_2': {
         name: 'Efficient Week',
-        description: 'Everyone worked quite smart and got a lot done this week.',
+        description: 'Everyone worked smarter not harder and got a lot done this week.',
         tags: ['summer'],
         effects: [
             (state, deck) => { state.updateValue('productive',1); tick(state); }
@@ -86,8 +86,92 @@ const Summer = {
     },
 };
 
-const Fall = {};
-const Winter = {};
+const Fall = {
+    'fall_1': {
+        name: 'Cozy Week',
+        description: 'Lots of time to swatch the leaves change colors this week.',
+        tags: ['fall'],
+        effects: [
+            (state, deck) => { state.updateValue('peace',1); tick(state); }
+        ],
+    },
+    'fall_2': {
+        name: 'Plentiful Week',
+        description: 'Bumper crops kept everybody busy this week.',
+        tags: ['fall'],
+        effects: [
+            (state, deck) => { state.updateValue('productive',1); tick(state); }
+        ],
+    },
+    'fall_3': {
+        name : 'Winter is coming...',
+        description : 'Everyone was really worried about the future this week.',
+        tags: ['fall'],
+        effects: [
+            (state, deck) => { state.updateValue('stress',1); tick(state); }
+        ],
+    },
+    'fall_4': {
+        name : 'Harvest Festival',
+        description : "Time to celebrate nature's bounty!",
+        tags: ['fall','celebration'],
+        effects: [
+            (state, deck) => { state.updateValue('festival',1); tick(state); }
+        ],
+    },
+    'fall_5': {
+        name : 'Refreshing Week',
+        description : 'The heat broke enough to enjoy this week.',
+        tags: ['fall'],
+        effects: [
+            (state, deck) => { state.updateValue('pleasant',1); tick(state); }
+        ],
+    },
+};
+
+const Winter = {
+    'winter_1': {
+        name: 'Cozy Week',
+        description: 'Everyone huddled inside with a warm fire this week.',
+        tags: ['winter'],
+        effects: [
+            (state, deck) => { state.updateValue('peace',1); tick(state); }
+        ],
+    },
+    'winter_2': {
+        name: 'Motivated Week',
+        description: 'Everyone came together to make good use of this week.',
+        tags: ['winter'],
+        effects: [
+            (state, deck) => { state.updateValue('productive',1); tick(state); }
+        ],
+    },
+    'winter_3': {
+        name : 'Blizzard',
+        description : 'It never stopped snowing this week.',
+        tags: ['winter'],
+        effects: [
+            (state, deck) => { state.updateValue('stress',1); tick(state); }
+        ],
+    },
+    'winter_4': {
+        name : 'Yuletide',
+        description : "Give each other gifts to ring in the coming year",
+        tags: ['winter','celebration'],
+        effects: [
+            (state, deck) => { state.updateValue('festival',1); tick(state); }
+        ],
+    },
+    'winter_5': {
+        name : 'Crisp Week',
+        description : 'Clear skies and hardly any wind this week.',
+        tags: ['winter'],
+        effects: [
+            (state, deck) => { state.updateValue('pleasant',1); tick(state); }
+        ],
+    },
+};
+
 const Special = {
     'bandit_1': {
         name: 'Bandit Scouts',

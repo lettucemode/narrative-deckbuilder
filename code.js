@@ -23,6 +23,30 @@ const normalWeeks = new Deck([
     'summer_4',
     'summer_5',
     'summer_5',
+    'fall_1',
+    'fall_1',
+    'fall_1',
+    'fall_2',
+    'fall_2',
+    'fall_2',
+    'fall_3',
+    'fall_3',
+    'fall_3',
+    'fall_4',
+    'fall_5',
+    'fall_5',
+    'winter_1',
+    'winter_1',
+    'winter_1',
+    'winter_2',
+    'winter_2',
+    'winter_2',
+    'winter_3',
+    'winter_3',
+    'winter_3',
+    'winter_4',
+    'winter_5',
+    'winter_5',
 ]);
 const specialEvents = new Deck([
     'bandit_1',
@@ -44,9 +68,10 @@ mainDeck = mainDeck.merge([globalState.getDeck('Normal'),globalState.getDeck('Sp
 //mainDeck = mainDeck.filter([hasAnyTag]);
 globalState.addDeck(mainDeck);
 globalState.getDeck('Main').show();
+globalState.display();
 
 const b = document.getElementById('drawButton');
-b.onclick=() => { globalState.getDeck('Main').draw([getSeasonFilter(globalState)]).play(globalState).show('card'); };
+b.onclick=() => { globalState.getDeck('Main').draw([getSeasonFilter(globalState)]).play(globalState).show('card'); globalState.display();};
 
 const s = document.getElementById('shuffleButton');
-s.onclick=() => { globalState.getDeck('Main').shuffle(); };
+s.onclick=() => { globalState.getDeck('Main').shuffle(); globalState.display();};
