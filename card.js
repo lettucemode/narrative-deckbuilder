@@ -25,7 +25,8 @@ class Card {
     play(state=new State(), deck = emptyDeck) {
         if ('effects' in this) {
             for (const e of this.effects) {
-                e(state, deck);
+                e.f(state, deck);
+                for (let i = 0; i < e.t; ++i) tick(state);
             }
         }
         console.log(`Playing ${this.name}`);
