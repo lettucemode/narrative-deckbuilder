@@ -1,13 +1,17 @@
 class State {
-    constructor(init_values={}, init_decks={},id='state') {
+    constructor(init_values={}, init_decks={}, init_triggers={}, id='state') {
         this._values = {};
         this._decks = {};
+        this._triggers = {};
         this._id = id;
         for (const key of Object.keys(init_values)) {
             this.setValue(key, init_values[key]);
         }
         for (const key of Object.keys(init_decks)) {
             this.addDeck(init_decks[key], key);
+        }
+        for (const key of Object.keys(init_triggers)) {
+            this.addTrigger(init_triggers[key], key);
         }
     }
 
@@ -36,7 +40,7 @@ class State {
             this._decks[_id] = deck;
             return;
         }
-        console.log(`Error: Deck ${deck.id} already present.`);
+        console.log(`Error: Deck ${_id} already present.`);
     }
     removeDeck(id) {
         if (id in this._decks) {
@@ -53,6 +57,29 @@ class State {
         }
         console.log(`Error: deck ${name} does not exist.`);
         return new Deck();
+    }
+
+    // Trigger Methods
+    addTrigger(id, trigger) {
+        if (!(id in this._triggers)) {
+            this._triggers[id] = trigger;
+            return;
+        }
+        console.log(`Error: Trigger ${id} already present.`);
+    }
+    removeTrigger(id) {
+        if (id in this._triggers) {
+            const t = this._triggers[id];
+            delete this._triggers[id];
+            return t;
+        }
+        console.log(`Error: Trigger ${id} does not exist.`);
+        return new Trigger();
+    }
+    applyTriggers() {
+        for (const key of Object.keys(this._triggers)) {
+            this._triggers[key].apply(this);
+        }
     }
 
     display(id='') {

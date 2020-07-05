@@ -73,9 +73,24 @@ mainDeck = mainDeck.merge([globalState.getDeck('Normal'),globalState.getDeck('Sp
 globalState.addDeck(mainDeck);
 globalState.getDeck('Main').show();
 globalState.display();
+function seasonMessage() {
+    if (globalState.getValue('time') > 52) {
+        alert('year!!!');
+        globalState.setValue('time',1);
+        globalState.getDeck('Main').shuffle();
+        globalState.display();
+    } else {
+        alert('season!');
+    }
+
+    globalState.removeTrigger('season');
+    globalState.addTrigger('season',SetTimer(13,globalState,seasonMessage));
+
+};
+globalState.addTrigger('season',SetTimer(13,globalState,seasonMessage));
 
 const b = document.getElementById('drawButton');
-b.onclick=() => { globalState.getDeck('Main').draw([getSeasonFilter(globalState)]).play(globalState).show('card'); globalState.display();};
+b.onclick=() => { globalState.getDeck('Main').draw([getSeasonFilter(globalState)]).play(globalState).show('card'); globalState.display();globalState.applyTriggers();};
 
 const s = document.getElementById('shuffleButton');
 s.onclick=() => { globalState.getDeck('Main').shuffle(); globalState.display();};
